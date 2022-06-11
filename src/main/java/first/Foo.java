@@ -3,15 +3,8 @@ package first;
 import java.util.concurrent.Semaphore;
 
 public class Foo {
-  Semaphore semaphoreA = new Semaphore(1);
-  Semaphore semaphoreB = new Semaphore(1);
-  Semaphore semaphoreC = new Semaphore(1);
-
-  public Foo() throws InterruptedException {
-    semaphoreA.acquire();
-    semaphoreB.acquire();
-    semaphoreC.acquire();
-  }
+  Semaphore semaphoreB = new Semaphore(0);
+  Semaphore semaphoreC = new Semaphore(0);
 
   public void first(Runnable r) {
     System.out.println("first");
@@ -26,7 +19,7 @@ public class Foo {
     System.out.println("third");
   }
 
-  public static void main(String[] args) throws InterruptedException {
+  public static void main(String[] args) {
     Foo foo = new Foo();
 
     Thread thread = new Thread(new ThreadA("A", foo));
